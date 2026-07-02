@@ -79,55 +79,20 @@
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        /* 화면 가장자리가 핏빛으로 물드는 효과 */
-        #blood-flash {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, transparent 20%, rgba(130, 0, 0, 0.7) 100%);
-            opacity: 0; pointer-events: none; z-index: 90; transition: opacity 0.6s ease-in-out;
-        }
+        #blood-flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(130, 0, 0, 0.7) 100%); opacity: 0; pointer-events: none; z-index: 90; transition: opacity 0.6s ease-in-out; }
         body.horror #blood-flash { opacity: 1; }
 
-        /* 암전 효과 레이어 */
-        #transition-blackout {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000000; z-index: 95;
-        }
-        .flicker-blackout {
-            display: block !important;
-            animation: light-flicker 0.6s steps(1) forwards;
-        }
-        @keyframes light-flicker {
-            0%   { opacity: 1; }   
-            20%  { opacity: 0; }   
-            35%  { opacity: 1; }   
-            50%  { opacity: 1; }
-            65%  { opacity: 0; }   
-            75%  { opacity: 1; }   
-            100% { opacity: 0; display: none; } 
-        }
+        #transition-blackout { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000; z-index: 95; }
+        .flicker-blackout { display: block !important; animation: light-flicker 0.6s steps(1) forwards; }
+        @keyframes light-flicker { 0% { opacity: 1; } 20% { opacity: 0; } 35% { opacity: 1; } 50% { opacity: 1; } 65% { opacity: 0; } 75% { opacity: 1; } 100% { opacity: 0; display: none; } }
 
-        /* TV 노이즈 연출 */
-        #tv-giltch-layer { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: linear-gradient(to right, #ffffff 14.28%, #ffff00 14.28%, #ffff00 28.56%, #00ffff 28.56%, #00ffff 42.84%, #00ff00 42.84%, #00ff00 57.12%, #ff00ff 57.12%, #ff00ff 71.4%, #ff0000 71.4%, #ff0000 85.68%, #0000ff 85.68%); 
-            z-index: 98; opacity: 0.9;
-        }
-        #tv-giltch-layer::before {
-            content: " "; display: block; position: absolute; top:0; left:0; bottom:0; right:0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 6px 100%; z-index: 99;
-        }
+        #tv-giltch-layer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, #ffffff 14.28%, #ffff00 14.28%, #ffff00 28.56%, #00ffff 28.56%, #00ffff 42.84%, #00ff00 42.84%, #00ff00 57.12%, #ff00ff 57.12%, #ff00ff 71.4%, #ff0000 71.4%, #ff0000 85.68%, #0000ff 85.68%); z-index: 98; opacity: 0.9; }
+        #tv-giltch-layer::before { content: " "; display: block; position: absolute; top:0; left:0; bottom:0; right:0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 4px, 6px 100%; z-index: 99; }
 
-        /* 최종 암전 레이어 */
         #glitch-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; }
 
         /* 최종 팝업 */
-        #document-popup { 
-            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 90%; max-width: 650px; background: #141414; border: 1px solid #444; padding: 40px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8); color: #ccc; z-index: 101; 
-            max-height: 80vh; flex-direction: column;
-        }
+        #document-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 650px; background: #141414; border: 1px solid #444; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); color: #ccc; z-index: 101; max-height: 80vh; flex-direction: column; }
         #document-popup h2 { text-align: center; color: #ff3333; margin-bottom: 25px; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 15px; flex-shrink: 0; text-shadow: 0 0 5px #ff0000; }
         
         #popup-scroll-area { flex-grow: 1; overflow-y: auto; padding-right: 10px; }
@@ -137,11 +102,8 @@
         #popup-scroll-area::-webkit-scrollbar-thumb:hover { background: #ff3333; }
 
         #popup-content { font-size: 0.95rem; line-height: 1.9; text-align: justify; white-space: pre-line; }
-        
         .popup-view-btn { display: inline-block; color: #ff3333; text-decoration: underline; cursor: pointer; font-weight: bold; margin-top: 15px; animation: blink 1s infinite; }
-        
         .typing-cursor::after { content: "■"; animation: cursor-blink 0.6s infinite; margin-left: 2px; color: #ff3333; }
-        @keyframes cursor-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
 <body>
@@ -149,7 +111,6 @@
     <div id="blood-flash"></div>
     <div id="transition-blackout"></div> 
 
-    <!-- 오디오 소스 (파일명 확인 필요) -->
     <audio id="snd-stage1" src="Dark_pad.mp3" loop></audio>
     <audio id="snd-stage2" src="tension_string.mp3" loop></audio>
     <audio id="snd-collapse" src="corruption.mp3" loop></audio>
@@ -174,21 +135,20 @@
 
         <div class="profile-top">
             <div class="avatar-container">
-                <!-- 이미지 파일명은 필요 시 나중에 수정 가능 -->
-                <img id="avatar-img" class="avatar" src="Kawk.jpg" alt="프로필">
+                <img id="avatar-img" class="avatar" src="" alt="프로필">
             </div>
             <div class="info-container">
                 <div class="info-row">
                     <span class="info-label">이름</span>
-                    <span id="p-name" class="info-value">곽제강</span>
+                    <span id="p-name" class="info-value"></span>
                 </div>
                 <div class="info-row">
                     <span class="info-label">부서</span>
-                    <span id="p-dept" class="info-value">연구 1팀</span>
+                    <span id="p-dept" class="info-value"></span>
                 </div>
                 <div class="info-row">
                     <span class="info-label">직급</span>
-                    <span id="p-rank" class="info-value">과장</span>
+                    <span id="p-rank" class="info-value"></span>
                 </div>
                 <div class="info-row" id="mask-row">
                     <span class="info-label">가면</span>
@@ -199,14 +159,7 @@
         
         <div class="features-container">
             <span id="f-label" class="features-label">특징</span>
-            <div id="p-features" class="features-value">
-                <div class="paragraph">
-                    &lt;어둠탐사기록&gt;에 등장하는 백일몽 주식 회사 원료개발부 연구 1팀의 직원. 회사에 새롭게 등록된 어둠을 탐사하는 초기 기록에서 자주 언급되는 연구직 중 하나.
-                </div>
-                <div class="paragraph">
-                    괴담에 매료된 <span class="danger-text">사이코패스</span> 혹은 <span class="danger-text">매드 사이언티스트</span> 아직 정보가 부족한 괴담을 탐사할 때, 죽을 게 뻔한 조합이나 행동을 부추겨 특이한 데이터를 뽑아내려는 미친 습관으로 탐사기록을 풍부하게 만들어 주는 일등 공신이다. 곽제강의 <span class="danger-text">징계 기록</span>은 #탐사기록(번외) 페이지에서 확인 가능.
-                </div>
-            </div>
+            <div id="p-features" class="features-value"></div>
         </div>
     </div>
 
@@ -215,28 +168,82 @@
 
     <!-- [5] 최종 팝업 창 -->
     <div id="document-popup">
-        <h2 id="popup-title">내 운명을 가져가 줘</h2>
+        <h2 id="popup-title"></h2>
         <div id="popup-scroll-area">
             <div id="popup-content"></div>
         </div>
     </div>
 
     <script>
+        // ==========================================
+        // 👥 사원 데이터베이스
+        // ==========================================
+        const commonPopupData = {
+            title: "내 운명을 가져가 줘",
+            part1: `<br>&lt;어둠탐사기록&gt; 에 등장하는 괴담, 백일몽 주식회사의 식별코드는 Qterw-■-■■■■.\n함께 진입한 인원과 인생이 뒤바뀌어 이변을 알아차릴 때까지 영원히 살아가는 괴담.\n\n괴담에 진입한 사람은 기억을 잃은 채로 함께 진입한 상대의 인생을 대신 살아가게 된다. 탈출할 방법은 진입 인원 전원이 자신의 위치가 어둠 속임을 인지하는 것. 탐사기록은 34회까지 기록되었다.\n\n\n▏탐사기록 #5\n정기 탐사를 위해 진입한 인원 2명 중 하대리가 기시감을 느끼고 기억을 되찾았으나 어둠에서 나가는 것을 <span class='danger-text'>거부</span>. 현재의 인생이 마음에 든다며 함께 진입했던 신사원을 <span class='danger-text'>살해</span>. 이후 연락 두절.\n\n▏탐사기록 #17\n진입 인원 3명 중 1명이 비관적인 이유로 ■■을 택함. 대상은 <span class='danger-text'>[검열삭제]</span>된 채로 발견 되었으며, 이후 나머지 2인 탈출 실패 및 <span class='danger-text'>실종</span>.\n\n▏탐사기록 #26\n진입 인원 3명 중 박 주임이 가장 먼저 자각. 나머지 두 명을 설득하려고 했으나 몸싸움으로 번짐. 격렬한 싸움 끝에 1명 <span class='danger-text'>사망</span>, 2명 <span class='danger-text'>실종</span>.\n\n\n하위 내용은 보안등급 ■등급 이상의 인원만이 열람 가능.\n`,
+            part2: `\n\n해당 어둠은 타인의 서사를 갈취한다는 공통점 때문에 무명찬란교의 흉내장이 교단에 속해 있는 것이 아니냐는 의문이 제기되었다.\n"해당 어둠에서 <span class='danger-text'>실종</span>되거나 <span class='danger-text'>사망</span>할 경우, 어둠에 의해 바뀐 인생으로 모두에게 기억되므로 끝내 본인의 정체성을 되찾지 못하고 잊히게 된다.`
+        };
+
+        const userDatabase = {
+            "Kawk_R1": {
+                name: "곽제강",
+                imgStage1: "Kawk.jpg",
+                imgStage2: "Kawk_horror.jpg", 
+                stage1: { dept: "연구 1팀", rank: "과장", header: "백일몽 주식회사 통합인사기록부", features: `<div class="paragraph">&lt;어둠탐사기록&gt;에 등장하는 백일몽 주식 회사 원료개발부 연구 1팀의 직원. 회사에 새롭게 등록된 어둠을 탐사하는 초기 기록에서 자주 언급되는 연구직 중 하나.</div><div class="paragraph">괴담에 매료된 <span class="danger-text">사이코패스</span> 혹은 <span class="danger-text">매드 사이언티스트</span> 아직 정보가 부족한 괴담을 탐사할 때, 죽을 게 뻔한 조합이나 행동을 부추겨 특이한 데이터를 뽑아내려는 미친 습관으로 탐사기록을 풍부하게 만들어 주는 일등 공신이다. 곽제강의 <span class="danger-text">징계 기록</span>은 #탐사기록(번외) 페이지에서 확인 가능.</div>` },
+                stage2: { dept: "현장탐사팀 B조", rank: "조장", mask: "북극여우", header: "백일몽 주식회사 현장탐사기록부", features: `<div class='paragraph' id='g-txt1'>&lt;어둠탐사기록&gt;에 등장하는 백일몽 주식 회사 현장탐사팀 B조의 직원. 회사에 새롭게 등록된 어둠을 탐사하는 초기 기록에서 자주 언급되는 현장탐사팀 직원 중 하나.</div><div class='paragraph' id='g-txt2'>괴담에 매료된 <span class='danger-text'>사이코패스</span>. 아직 정보가 부족한 괴담을 탐사할 때, 죽을 게 뻔한 행동을 부추겨 어둠의 특이한 반응을 보려는 미친 습관으로 탐사기록을 풍부하게 만들어 주는 일등 공신이다. 곽제강의 <span class='danger-text'>징계 기록</span>은 #탐사기록(번외) 페이지에서 확인 가능.</div><div class='paragraph' id='g-txt3'>현재 Qterw-■-■■■■에 진입중. 관련 탐사기록을 확인하려면 <span class='more-link' onclick='startTextCorruption()'>[더보기]</span>.</div>` } // 👈 오타 수정 완료!
+                popup: commonPopupData
+            },
+            "B_Leader": { 
+                name: "■■■",
+                imgStage1: "B1.jpg",
+                imgStage2: "B2.jpg",
+                stage1: { dept: "현장탐사팀 B조", rank: "조장", mask: "늑대", header: "백일몽 주식회사 통합인사기록부", features: `<div class="paragraph">&lt;어둠탐사기록&gt;에 등장하는 백일몽 주식 회사 현장탐사팀 B조의 직원. 백일몽 주식 회사가 상장되기 이전부터 정예팀인 B조의 조장이었으며 초기 기록에 자주 언급되는 네임드 중 하나.</div><div class="paragraph">백일몽 회사에서 <span class="danger-text">True/False</span>를 판별하는 감각, 양자택일의 상황에서 반복적으로 특출난 정답 값을 보이는 직원이 소속되는 B조의 조장으로 마지막 탐사기록은 <span class="danger-text">Qterw-A-37</span>. 관련된 자료는 <span class="danger-text">Qterw-A-37</span> 연구 중 실종된 직원의 녹음기록 확인.</div>` },
+                stage2: { dept: "연구 1팀", rank: "과장", header: "백일몽 주식회사 현장탐사기록부", features: `<div class='paragraph' id='g-txt1'>&lt;어둠탐사기록&gt;에 등장하는 백일몽 주식 회사 원료개발부 연구 1팀의 직원. 백일몽 주식 회사가 상장되기 이전부터 자주 언급되는 네임드 중 하나.</div><div class='paragraph' id='g-txt2'><span class='danger-text'>True/False</span>를 판별하는 감각, 양자택일의 상황에서 반복적으로 특출난 정답 값을 보이며 해당 능력을 활용한 연구를 진행하기도 하는 연구 1팀의 직원.</div><div class='paragraph' id='g-txt3'>대부분의 직원과 좋은 관계를 유지하고 있지만 자신의 영역 안의 것에는 <span class='danger-text'>예민한 성향</span>을 보인다.현재 Qterw-■-■■■■에 진입중. 관련 탐사기록을 확인하려면 <span class='more-link' onclick='startTextCorruption()'>[더보기]</span>.</div>` },
+                popup: commonPopupData
+            }
+        };
+
+        let currentUser = null; 
+
         const s1 = document.getElementById('snd-stage1');
         const s2 = document.getElementById('snd-stage2');
         const sCollapse = document.getElementById('snd-collapse');
         const sBeep = document.getElementById('snd-beep');
 
-        s1.volume = 1.0;       
-        s2.volume = 0.6;       
-        sCollapse.volume = 0.5; 
-        sBeep.volume = 0.4;    
+        s1.volume = 1.0; s2.volume = 0.6; sCollapse.volume = 0.5; sBeep.volume = 0.4;    
 
         function checkCode() {
             const input = document.getElementById('code-input').value;
-            // 패스워드 Kawk_R1으로 업데이트 완료
-            if (input === 'Kawk_R1') {
-                s1.play().catch(e => console.log("오디오 재생 제한 우회용 캐치"));
+            
+            if (userDatabase[input]) {
+                currentUser = userDatabase[input]; 
+                
+                // [1단계 데이터 렌더링]
+                document.getElementById('avatar-img').src = currentUser.imgStage1;
+                document.getElementById('p-name').innerText = currentUser.name;
+                document.getElementById('p-dept').innerText = currentUser.stage1.dept;
+                document.getElementById('p-rank').innerText = currentUser.stage1.rank;
+                document.getElementById('h-title-ko').innerText = currentUser.stage1.header;
+                document.getElementById('p-features').innerHTML = currentUser.stage1.features;
+                
+                if(currentUser.stage1.mask) {
+                    document.getElementById('mask-row').style.display = 'flex';
+                    document.getElementById('p-mask').innerText = currentUser.stage1.mask;
+                } else {
+                    document.getElementById('mask-row').style.display = 'none';
+                }
+                
+                try {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    const audioCtx = new AudioContext();
+                    const source = audioCtx.createMediaElementSource(s1);
+                    const gainNode = audioCtx.createGain();
+                    gainNode.gain.value = 2.5; 
+                    source.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                } catch(e) { console.log(e); }
+
+                s1.play().catch(e => console.log("재생 제한 우회"));
                 document.getElementById('login-screen').style.opacity = '0';
                 
                 setTimeout(() => {
@@ -261,17 +268,20 @@
 
                 setTimeout(() => {
                     document.body.classList.add('horror');
-                    document.getElementById('h-title-ko').innerText = "백일몽 주식회사 현장탐사기록부";
-                    document.getElementById('p-dept').innerText = "정예 B조";
-                    document.getElementById('p-rank').innerText = "조장";
-                    document.getElementById('mask-row').style.display = 'flex';
-                    document.getElementById('p-mask').innerText = "북극여우";
-                    document.getElementById('f-label').innerText = "특징";
                     
-                    document.getElementById('p-features').innerHTML = 
-                        "<div class='paragraph' id='g-txt1'>&lt;어둠탐사기록&gt;에 등장하는 백일몽 주식 회사 현장탐사팀 B조의 직원. 회사에 새롭게 등록된 어둠을 탐사하는 초기 기록에서 자주 언급되는 현장탐사팀 직원 중 하나.</div>" +
-                        "<div class='paragraph' id='g-txt2'>괴담에 매료된 <span class='danger-text'>사이코패스</span>. 아직 정보가 부족한 괴담을 탐사할 때, 죽을 게 뻔한 행동을 부추겨 어둠의 특이한 반응을 보려는 미친 습관으로 탐사기록을 풍부하게 만들어 주는 일등 공신이다. 곽제강의 <span class='danger-text'>징계 기록</span>은 #탐사기록(번외) 페이지에서 확인 가능.</div>" +
-                        "<div class='paragraph' id='g-txt3'>현재 Qterw-■-■■■■에 진입중. 관련 탐사기록을 확인하려면 <span class='more-link' onclick='startTextCorruption()'>[더보기]</span>.</div>";
+                    // [2단계 데이터 렌더링]
+                    document.getElementById('avatar-img').src = currentUser.imgStage2;
+                    document.getElementById('h-title-ko').innerText = currentUser.stage2.header;
+                    document.getElementById('p-dept').innerText = currentUser.stage2.dept;
+                    document.getElementById('p-rank').innerText = currentUser.stage2.rank;
+                    document.getElementById('p-features').innerHTML = currentUser.stage2.features;
+                    
+                    if(currentUser.stage2.mask) {
+                        document.getElementById('mask-row').style.display = 'flex';
+                        document.getElementById('p-mask').innerText = currentUser.stage2.mask;
+                    } else {
+                        document.getElementById('mask-row').style.display = 'none';
+                    }
                 }, 200);
 
                 setTimeout(() => {
@@ -294,7 +304,7 @@
             let elements = [];
             targetIds.forEach(id => {
                 let el = document.getElementById(id);
-                if(el) elements.push({ el: el, original: el.innerText, current: el.innerText.split('') });
+                if(el && el.style.display !== 'none') elements.push({ el: el, original: el.innerText, current: el.innerText.split('') });
             });
 
             let corruptionProgress = 0;
@@ -331,6 +341,7 @@
                     document.getElementById('profile-screen').style.display = 'none';
                     document.getElementById('document-popup').style.display = 'flex';
                     
+                    document.getElementById('popup-title').innerText = currentUser.popup.title;
                     startGlitchTyping();
                 }, 1000);
             }, 800);
@@ -340,21 +351,8 @@
             const popupBody = document.getElementById('popup-content');
             const scrollArea = document.getElementById('popup-scroll-area');
             
-            const part1Text = 
-                "<br>&lt;어둠탐사기록&gt; 에 등장하는 괴담, 백일몽 주식회사의 식별코드는 Qterw-■-■■■■.\n" +
-                "함께 진입한 인원과 인생이 뒤바뀌어 이변을 알아차릴 때까지 영원히 살아가는 괴담.\n\n" +
-                "괴담에 진입한 사람은 기억을 잃은 채로 함께 진입한 상대의 인생을 대신 살아가게 된다. 탈출할 방법은 진입 인원 전원이 자신의 위치가 어둠 속임을 인지하는 것. 탐사기록은 34회까지 기록되었다.\n\n\n" +
-                "▏탐사기록 #5\n" +
-                "정기 탐사를 위해 진입한 인원 2명 중 하대리가 기시감을 느끼고 기억을 되찾았으나 어둠에서 나가는 것을 <span class='danger-text'>거부</span>. 현재의 인생이 마음에 든다며 함께 진입했던 신사원을 <span class='danger-text'>살해</span>. 이후 연락 두절.\n\n" +
-                "▏탐사기록 #17\n" +
-                "진입 인원 3명 중 1명이 비관적인 이유로 ■■을 택함. 대상은 <span class='danger-text'>[검열삭제]</span>된 채로 발견 되었으며, 이후 나머지 2인 탈출 실패 및 <span class='danger-text'>실종</span>.\n\n" +
-                "▏탐사기록 #26\n" +
-                "진입 인원 3명 중 박 주임이 가장 먼저 자각. 나머지 두 명을 설득하려고 했으나 몸싸움으로 번짐. 격렬한 싸움 끝에 1명 <span class='danger-text'>사망</span>, 2명 <span class='danger-text'>실종</span>.\n\n\n" +
-                "하위 내용은 보안등급 ■등급 이상의 인원만이 열람 가능.\n";
-
-            const part2Text = 
-                "\n\n해당 어둠은 타인의 서사를 갈취한다는 공통점 때문에 무명찬란교의 흉내장이 교단에 속해 있는 것이 아니냐는 의문이 제기되었다.\n" +
-                "해당 어둠에서 <span class='danger-text'>실종</span>되거나 <span class='danger-text'>사망</span>할 경우, 어둠에 의해 바뀐 인생으로 모두에게 기억되므로 끝내 본인의 정체성을 되찾지 못하고 잊히게 된다.";
+            const part1Text = currentUser.popup.part1;
+            const part2Text = currentUser.popup.part2;
 
             let index = 0;
             let currentScript = part1Text;
@@ -368,25 +366,14 @@
                 while (i < script.length && len < maxLen) {
                     if (script[i] === '<') {
                         let tag = "";
-                        while (i < script.length && script[i] !== '>') {
-                            tag += script[i];
-                            i++;
-                        }
-                        tag += '>';
-                        i++;
-                        result += tag;
-                    } else {
-                        result += script[i];
-                        len++;
-                        i++;
-                    }
+                        while (i < script.length && script[i] !== '>') { tag += script[i]; i++; }
+                        tag += '>'; i++; result += tag;
+                    } else { result += script[i]; len++; i++; }
                 }
                 return result;
             }
 
-            function getRawLength(script) {
-                return script.replace(/<[^>]*>/g, "").length;
-            }
+            function getRawLength(script) { return script.replace(/<[^>]*>/g, "").length; }
 
             popupBody.classList.add('typing-cursor');
 
@@ -429,15 +416,11 @@
                 let currentHTML = popupBody.innerHTML;
                 if (currentHTML.length > 20) {
                     let glitchCount = Math.floor(Math.random() * 2) + 1;
-                    
                     for (let k = 0; k < glitchCount; k++) {
                         let textNodes = [];
                         function findTextNodes(node) {
-                            if (node.nodeType === 3) {
-                                if(node.nodeValue.trim().length > 0) textNodes.push(node);
-                            } else if (node.id !== 'read-more-btn') {
-                                for (let child of node.childNodes) findTextNodes(child);
-                            }
+                            if (node.nodeType === 3) { if(node.nodeValue.trim().length > 0) textNodes.push(node); } 
+                            else if (node.id !== 'read-more-btn') { for (let child of node.childNodes) findTextNodes(child); }
                         }
                         findTextNodes(popupBody);
 
@@ -455,10 +438,7 @@
                                 setTimeout(() => {
                                     if(Math.random() < 0.85) { 
                                         let restoreArr = targetNode.nodeValue.split('');
-                                        if(restoreArr[targetIdx]) {
-                                            restoreArr[targetIdx] = originalChar;
-                                            targetNode.nodeValue = restoreArr.join('');
-                                        }
+                                        if(restoreArr[targetIdx]) { restoreArr[targetIdx] = originalChar; targetNode.nodeValue = restoreArr.join(''); }
                                     }
                                 }, 70);
                             }
